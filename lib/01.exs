@@ -1,11 +1,11 @@
-# input = """
-# 1721
-# 979
-# 366
-# 299
-# 675
-# 1456
-# """
+_sample = """
+1721
+979
+366
+299
+675
+1456
+"""
 
 input = """
 1686
@@ -216,7 +216,7 @@ vals = input
 |> Enum.map(&String.to_integer/1)
 
 vals
-|> Enum.flat_map(fn a -> vals |> Enum.map(& [a, &1]) end)
-|> Enum.find(fn [a, b] -> a + b == 2020 end)
-|> (fn [a, b] -> a * b end).()
+|> Stream.flat_map(fn a -> vals |> Stream.flat_map(fn b -> vals |> Stream.map(& [a, b, &1]) end) end)
+|> Enum.find(fn [a, b, c] -> a + b + c == 2020 end)
+|> (fn [a, b, c] -> a * b * c end).()
 |> IO.inspect
