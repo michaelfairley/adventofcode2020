@@ -1034,7 +1034,7 @@ defmodule Day02 do
     a_match = captures["string"] |> String.at(a) == target
     b_match = captures["string"] |> String.at(b) == target
 
-    :erlang.xor(a_match, b_match)
+    a_match != b_match
   end
 end
 
