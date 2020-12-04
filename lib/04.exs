@@ -1,4 +1,4 @@
-sample = """
+_sample = """
 ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
@@ -1152,8 +1152,6 @@ byr:2000
 ecl:hzl eyr:2029
 iyr:2011 hcl:#866857 hgt:74in
 """
-
-# input = sample
 
 passports = input |> String.trim |> String.split("\n\n") |> Enum.map(& String.replace(&1, "\n", " "))
 
