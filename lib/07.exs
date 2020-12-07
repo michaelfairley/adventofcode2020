@@ -643,9 +643,11 @@ bags = input
 |> Stream.map(&Bag.parse/1)
 |> Enum.reduce(%{}, fn {name, contains}, acc -> Map.put(acc, name, contains) end)
 
+# part 1
 bags
 |> Enum.count(fn {_, contents} -> Bag.contains?(bags, "shiny gold", contents) end)
 |> IO.inspect
 
+# part 2
 Bag.count(bags, Map.get(bags, "shiny gold"))
 |> IO.inspect
