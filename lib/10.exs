@@ -163,9 +163,9 @@ diffs[1] * diffs[3]
 
 # part 2
 sorted
-|> Enum.reduce(%{0 => 1}, fn x, paths_to ->
-  sum = (1..3) |> Enum.map(& Map.get(paths_to, x - &1, 0)) |> Enum.sum
-  Map.put(paths_to, x, sum)
+|> Enum.reduce(%{0 => 1}, fn x, num_paths_to ->
+  sum = (x-3..x-1) |> Enum.map(&Map.get(num_paths_to, &1, 0)) |> Enum.sum
+  Map.put(num_paths_to, x, sum)
 end)
 |> Enum.max
 |> IO.inspect
